@@ -10,23 +10,74 @@
     \fbox{\includegraphics[width=60mm]{images/base.png}}
   \end{center}
   \caption{視覚化前の検索結果一覧}
-  \label{fig:ver_vase}
+  \label{fig:ver_base}
 \end{figure}
 
 
 \section{テクスチャによる変化}
+\label{sec:ver_texture}
 
 テクスチャを適用することで鮮度を視覚化する方法を検証する。
 
 \subsection{紙の経年劣化}
+\label{subsec:ver_tex_sheet}
 
-実世界に存在する記録媒体で劣化するものを考えたときに最初に思い浮かんだのが紙だった。
+実世界に存在する記録媒体で劣化するものを考えたときに最初に思い浮かんだのが紙である。
 
-紙は時間が経つと黄ばみやシミができる。そういった変化を参考に、情報の鮮度を視覚化してみた。
+紙は時間が経つと黄ばみやシミができる。そういった変化を参考に、情報の鮮度を視覚化した。
 
+\begin{figure}[htbp]
+  \begin{minipage}{0.5\hsize}
+    \begin{center}
+      \fbox{\includegraphics[width=60mm]{images/sheet-degradation1.png}}
+    \end{center}
+    \caption{紙の経年劣化をイメージした視覚化１}
+    \label{fig:ver_sheet1}
+  \end{minipage}
+  \begin{minipage}{0.5\hsize}
+    \begin{center}
+      \fbox{\includegraphics[width=60mm]{images/sheet-degradation2.png}}
+    \end{center}
+    \caption{紙の経年劣化をイメージした視覚化２}
+    \label{fig:ver_sheet2}
+  \end{minipage}
+\end{figure}
 
+各検索結果ごとに公開日を参考に、劣化した紙のテクスチャを適用したのが図\ref{fig:ver_sheet1}である。
 
-\subsection{鉄のさび}
+さらに、全体に紙のテクスチャを適用することで劣化した紙のテクスチャが背景になじむように調整したのが図\ref{fig:ver_sheet2}である。
+
+紙の劣化を参考にしているためか、古いということが分かりやすい。家や図書館などで古くなった本を見た経験がある人ならば、紙の時間経過による劣化を連想しやすいかもしれない。
+
+図\ref{fig:ver_sheet1}に比べて、図\ref{fig:ver_sheet2}の方が背景に紙のテクスチャを設定しているため劣化した紙のテクスチャに違和感が少ない。
+
+\subsection{金属のさび}
+\label{subsec:ver_tex_russet}
+
+実世界に存在するモノで紙以外に外見的な劣化の参考になるものを考えたとき、次に浮かんだのは金属である。
+
+金属は雨風にさらされることでさびが発生するため、時間経過による劣化が簡単に見て取れる。これを参考に視覚化を行った。
+
+\begin{figure}[htbp]
+  \begin{minipage}{0.5\hsize}
+    \begin{center}
+      \fbox{\includegraphics[width=60mm]{images/iron-russet1.png}}
+    \end{center}
+    \caption{金属のさびをイメージした視覚化１}
+    \label{fig:ver_russet1}
+  \end{minipage}
+  \begin{minipage}{0.5\hsize}
+    \begin{center}
+      \fbox{\includegraphics[width=60mm]{images/iron-russet2.png}}
+    \end{center}
+    \caption{金属のさびをイメージした視覚化２}
+    \label{fig:ver_russet2}
+  \end{minipage}
+\end{figure}
+
+\ref{subsec:ver_tex_sheet}の方法と同様に、錆びた金属のテクスチャを適用したのが図\ref{fig:ver_russet1}である。
+
+また、背景に錆びていない金属のテクスチャを適用したのが図\ref{fig:ver_russet2}である。
 
 \section{色による変化}
 
