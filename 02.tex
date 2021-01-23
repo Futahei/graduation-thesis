@@ -1,12 +1,61 @@
-\chapter{本テンプレートの使い方}
-\label{chap:howto}
+\chapter{鮮度の表現方法の検証}
+\label{chap:verification}
 
-本章では、本テンプレートの具体的な使用方法を解説する。基本的には、{\tt main.tex} を上から順に修正していけばよいだけ。 
+本章では、情報の鮮度の視覚化について様々な視覚化の方法を試し、それぞれ考察していく。
+
+以下で検証する全ての項目に関して図\ref{fig:ver_base}を利用する。
+
+\begin{figure}[htbp]
+  \begin{center}
+    \fbox{\includegraphics[width=60mm]{images/base.png}}
+  \end{center}
+  \caption{視覚化前の検索結果一覧}
+  \label{fig:ver_vase}
+\end{figure}
 
 
-\section{テンプレートの構成}
+\section{テクスチャによる変化}
 
-このテンプレートは、表\ref{tb:files}のファイルで構成されている。
+テクスチャを適用することで鮮度を視覚化する方法を検証する。
+
+\subsection{紙の経年劣化}
+
+実世界に存在する記録媒体で劣化するものを考えたときに最初に思い浮かんだのが紙だった。
+
+紙は時間が経つと黄ばみやシミができる。そういった変化を参考に、情報の鮮度を視覚化してみた。
+
+
+
+\subsection{鉄のさび}
+
+\section{色による変化}
+
+背景色や文字色を変更することで鮮度を視覚化する方法を検証する。
+
+\subsection{背景の色褪せ}
+\subsection{インクの劣化}
+
+\section{文字の消失による変化}
+
+文字の一部、または全体を欠落させたり存在感を薄めることで鮮度を視覚化する方法を検証する。
+
+\subsection{透明化}
+\subsection{滲む}
+\subsection{虫食い}
+
+\section{フォントによる変化}
+
+使用されるフォントを変更することで鮮度を視覚化する方法を検証する。
+
+\subsection{書体}
+\subsection{ドット文字}
+
+\section{その他の変化}
+
+以上までに分類されない変化を用いて鮮度を視覚化する方法を検証する。
+
+\subsection{テロメア}
+
 
 \begin{table}[htbp]
   \caption{構成ファイル}
