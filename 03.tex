@@ -3,3 +3,45 @@
 
 本章では、第\ref{chap:verification}章で検証した鮮度の表現方法を参考に、実際にブラウザで動作する拡張機能の実装について述べる。
 
+\section{システム概要}
+\label{sec:imp_system}
+
+本システムは Web ブラウザとして多くのシェアを持つ\footnote{\url{https://gs.statcounter.com/browser-market-share}} Google Chrome の拡張機能での実装を行った。
+
+開発環境には関しては、TypeScript\footnote{\url{https://www.typescriptlang.org/}}, Webpack\footnote{\url{https://webpack.js.org/}} を用いている。
+
+機能として、Google 検索結果一覧画面に対し、各 Web サイトの公開日を取得することでそれぞれの情報の鮮度を割り出し外見的な劣化を加えるものである。
+
+第\ref{chap:verification}章で検証した鮮度の表現方法のうち私が実装可能かつ実用的だと判断した\ref{subsec:ver-tex-sheet}の表現方法を採用している。
+
+\section{鮮度の算出方法}
+\label{sec:imp_calculation}
+
+鮮度(以下 $F$ とする)は 0 ~ 1 の間で表すものとし、1に近ければ近いほど新しいと考える。
+
+また、各情報の公開日を、現在からある年数分までの期間でどの位置に存在するかを 0 ~ 1 の値で表現する(以下 $D$ とする)。(例：2018/01/18の情報は、現在(2021/01/24)から 5 年の期間の間で約 0.6 の位置となる)
+
+以下で示す二つの算出方法を検証し、最終的に後者を採用した。
+
+\subsubsection{直線的な算出}
+
+$ F = 1 - D $ の式で鮮度を算出する。シンプルで利用に関して特に問題はなかった。
+
+\subsubsection{指数関数的な算出}
+
+$ F =  0.01 ^ D$ の式で鮮度を算出する。少しでも古いものの鮮度が大幅に小さくなるため、より新しい情報を強調することができた。
+
+\begin{figure}[htbp]
+  \begin{minipage}{0.5\hsize}
+    \begin{center}
+      \fbox{\includegraphics[width=60mm]{images/graph-linear.png}}
+    \end{center}
+    \caption{直線的な算出方法}
+  \end{minipage}
+  \begin{minipage}{0.5\hsize}
+    \begin{center}
+      \fbox{\includegraphics[width=60mm]{images/graph-exponential.png}}
+    \end{center}
+    \caption{指数関数的な算出方法}
+  \end{minipage}
+\end{figure}
