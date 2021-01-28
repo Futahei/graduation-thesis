@@ -1,5 +1,6 @@
 修士論文・卒業論文用LaTeXテンプレート
 =====================================
+![CI](https://github.com/Futahei/graduation-thesis/workflows/CI/badge.svg)
 
 慶應義塾大学湘南藤沢キャンパス(SFC)の修士論文用のテンプレートです．オリジナルは
 [@kurokobo](http://twitter.com/kurokobo) による
