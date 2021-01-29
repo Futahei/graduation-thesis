@@ -8,11 +8,11 @@
 \section{システム概要}
 \label{sec:imp_system}
 
-本システムは Web ブラウザとして多くのシェアを持つ\footnote{\url{https://gs.statcounter.com/browser-market-share}} Google Chrome の拡張機能での実装を行った．
+本システムは Web ブラウザとして多くのシェアを持つ\footnote{\url{https://gs.statcounter.com/browser-market-share}} Google Chrome の拡張機能として実装した．
 
-開発環境には関しては，TypeScript\footnote{\url{https://www.typescriptlang.org/}}, Webpack\footnote{\url{https://webpack.js.org/}} を用いている．
+開発においては，言語に TypeScript\footnote{\url{https://www.typescriptlang.org/}} を利用し, ビルドツールとして Webpack\footnote{\url{https://webpack.js.org/}} を用いている．
 
-本システムは，Google 検索結果一覧画面に対し，各 Web サイトの公開日を取得することでそれぞれの情報の鮮度を割り出し，外見的な劣化を加える機能を持つ．
+本システムは，検索結果の情報から各 Web サイトの公開日を取得することでそれぞれの情報の鮮度を計算し，それを参考に検索結果一覧画面に対して外見的な変化を加える機能を持つ．
 
 第\ref{chap:verification}章で検証した鮮度の表現方法のうち，筆者が実装可能かつ実用的だと判断した\ref{subsec:ver-tex-sheet}の表現方法を採用している．
 
@@ -36,7 +36,7 @@
 
 本システムでは，各情報の更新日時から現在までの経過時間(以下，時間距離とする)を参考に鮮度を算出する．算出方法として，(1)直線的なアプローチと(2)指数関数的なアプローチを考える．
 
-以下で，二つの算出方法を実際に運用した場合の例と共に紹介するが，紹介にあたって３つの前提条件を示す．
+二つの算出方法を実際に運用した場合の例と共に紹介するが，紹介にあたって鮮度 $F$，時間距離 $D$ を以下のように定義する．
 
 \begin{itemize}
   \item 鮮度 $F$ は０～１の値で表し，1に近ければ近いほど新しい
@@ -45,6 +45,7 @@
 \end{itemize}
 
 \subsubsection{直線的な算出}
+\label{subsec:linear}
 
 $ F = 1 - D $ の式で鮮度を算出する．$D$ が大きくなるのに比例して $F$ が小さくなる．システムを運用していても特に問題はない．
 
@@ -64,6 +65,7 @@ $ F = 1 - D $ の式で鮮度を算出する．$D$ が大きくなるのに比�
 \end{figure}
 
 \subsubsection{指数関数的な算出}
+\label{subsec:exponential}
 
 $ F =  0.01 ^ D $ の式で鮮度を算出する．$D$ の値が大きくなると $F$ が大幅に小さくなる．つまり情報が少しでも古ければ鮮度が大幅に小さくなるため，より新しい情報を強調することができる．
 
@@ -83,6 +85,6 @@ $ F =  0.01 ^ D $ の式で鮮度を算出する．$D$ の値が大きくなる�
 \end{figure}
 
 
-二つの算出方法を吟味した結果，指数関数的な算出方法の方が新しい情報をより強調しており，直線的な算出方法より直感的に鮮度を感じられた．
+二つの算出方法を吟味した結果，古い情報よりも新しい情報に価値があるという前提のもと，指数関数的な算出方法の新しい情報をより強調する性質の方が，直線的な算出方法よりも好ましいと考える．
 
-実装では，(2)の算出方法を利用して開発を行うこととした．
+そのため，実装では，\ref{subsec:exponential}の算出方法を利用して開発を行うこととした．
